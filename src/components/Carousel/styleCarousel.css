@@ -1,0 +1,27 @@
+.slide-section .owl-carousel .owl-nav button {
+  position: absolute;
+  top: 40%;
+  z-index: 11;
+  outline: none;
+}
+
+.slide-section .owl-carousel .owl-nav .owl-prev {
+  left: 0;
+}
+
+.slide-section .owl-carousel .owl-nav .owl-next {
+  right: 0;
+}
+
+.slide-section .owl-carousel .owl-nav button span {
+  font-size: 100px;
+  opacity: 0.1;
+}
+
+.slide-section .owl-carousel .owl-nav button span:hover {
+  opacity: 1;
+}
+
+.slide-section .item {
+  margin: 0 !important;
+}
