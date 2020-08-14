@@ -1,17 +1,18 @@
 import React from 'react';
-import TopBar from "./components/TopBar";
 import Header from "./components/Header";
-import Carousel from "./components/Carousel";
 import Footer from "./components/Footer";
+import Cart from "./components/Cart";
+import Body from "./containers/Body";
+import 'antd/dist/antd.css'
 import { BrowserRouter } from "react-router-dom";
 
 export default () => {
   return (
     <BrowserRouter>
-      <TopBar />
       <Header />
-      <Carousel />
+      <Body />
       <Footer />
+      <Cart />
     </BrowserRouter>
   )
 }

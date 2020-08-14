@@ -55,6 +55,7 @@ export const Subcribe = styled('div')`
 
 export const CopyRight = styled('div')`
   text-align: center;
+  margin-top: 100px;
   color: #b2b2b2;
   font-size: 14px;
   a{
@@ -63,6 +64,12 @@ export const CopyRight = styled('div')`
     &:hover{
       color: #004c9e;
     }
+  }
+  div{
+    a{
+      margin-right: 3px;
+    }
+    margin-bottom: 10px;
   }
 `;
 
@@ -77,23 +84,38 @@ export const InputEmail = styled(Input)`
   color: #b2b2b2;
   font-size: 16px;
   width: 100%;
+  padding: 0;
   &:focus{
     outline: none;
+    border: none;
   }
   &::placeholder{
     color: #b2b2b2;
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
 export const BtnSubcribe = styled(Button)`
+  cursor: pointer;
   background-color: #717fe0;
   border: 1px solid #717fe0;
   border-radius: 25px;
-  padding: 10px 30px;
+  height: 45px;
+  width: 150px;
   font-size: 15px;
   line-height: 1.466667;
   text-transform: uppercase;
   color: #fff;
   font-weight: bold;
+  &:hover{
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #717fe0;
+  }
+  &:focus{
+    outline: none;
+    background-color: #717fe0;
+    color: #fff;
+    border: 1px solid #717fe0;
+  }
 `;

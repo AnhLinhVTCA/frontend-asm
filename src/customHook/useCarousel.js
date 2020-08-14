@@ -5,8 +5,10 @@ import "owl.carousel";
 
 export default (option) => {
   const carousel = useRef();
+
   useEffect(() => {
     $(carousel.current).owlCarousel(option);
   }, [option])
+
   return carousel
 }

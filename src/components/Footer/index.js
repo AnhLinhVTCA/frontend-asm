@@ -12,25 +12,25 @@ export default () => {
               Categories
 					    </h4>
             <ul>
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   Women
 							  </Link>
               </li>
 
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   Men
 							</Link>
               </li>
 
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   Shoes
 							</Link>
               </li>
 
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   Watches
 							</Link>
@@ -42,22 +42,22 @@ export default () => {
               Help
 					    </h4>
             <ul>
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   Track Order
 							</Link>
               </li>
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   Returns
 							</Link>
               </li>
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   Shipping
 							</Link>
               </li>
-              <li className="p-b-10">
+              <li>
                 <Link to="#">
                   FAQs
 							</Link>
@@ -71,26 +71,26 @@ export default () => {
             <p className="question">
               Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
 			  	  	</p>
-            <div className="p-t-27">
-              <Link to="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+            <div>
+              <Link to="#">
                 <i className="fa fa-facebook"></i>
               </Link>
 
-              <Link to="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+              <Link to="#">
                 <i className="fa fa-instagram"></i>
               </Link>
 
-              <Link to="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+              <Link to="#">
                 <i className="fa fa-pinterest-p"></i>
               </Link>
             </div>
           </Custom.Col3>
-          <Custom.Col3>
+          <Custom.Col3 style={{ padding: '0 30px' }} >
             <h4 className="title">
               Newsletter
-			  		  </h4>
+			  		</h4>
             <form>
-              <div className="wrap-input1 w-full p-b-4">
+              <div>
                 <Custom.InputEmail type="text" name="email" placeholder="email@example.com" />
                 <Custom.FocusInput></Custom.FocusInput>
               </div>
@@ -103,24 +103,24 @@ export default () => {
           </Custom.Col3>
         </Custom.Row>
         <Custom.CopyRight>
-          <div className="flex-c-m flex-w p-b-18">
-            <Link to="#" className="m-all-1">
-              <img src="images/icons/icon-pay-01.png" alt="ICON-PAY" />
+          <div>
+            <Link to="#">
+              <img src={require("../../images/icons/icon-pay-01.png")} alt="ICON-PAY" />
             </Link>
-            <Link to="#" className="m-all-1">
-              <img src="images/icons/icon-pay-02.png" alt="ICON-PAY" />
+            <Link to="#">
+              <img src={require("../../images/icons/icon-pay-02.png")} alt="ICON-PAY" />
             </Link>
-            <Link to="#" className="m-all-1">
-              <img src="images/icons/icon-pay-03.png" alt="ICON-PAY" />
+            <Link to="#">
+              <img src={require("../../images/icons/icon-pay-03.png")} alt="ICON-PAY" />
             </Link>
-            <Link to="#" className="m-all-1">
-              <img src="images/icons/icon-pay-04.png" alt="ICON-PAY" />
+            <Link to="#">
+              <img src={require("../../images/icons/icon-pay-04.png")} alt="ICON-PAY" />
             </Link>
-            <Link to="#" className="m-all-1">
-              <img src="images/icons/icon-pay-05.png" alt="ICON-PAY" />
+            <Link to="#">
+              <img src={require("../../images/icons/icon-pay-05.png")} alt="ICON-PAY" />
             </Link>
           </div>
-          <p className="stext-107 cl6 txt-center">
+          <p>
             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="fa fa-heart-o" aria-hidden="true"></i> by <Link to="https://colorlib.com" rel="noopener noreferrer">Colorlib</Link>
           </p>
         </Custom.CopyRight>

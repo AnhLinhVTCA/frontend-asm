@@ -13,12 +13,6 @@ export const showListProducts = (data) => {
   }
 }
 
-export const toggleDisplayQuickCart = () => {
-  return {
-    type: type.TOGGLE_DISPLAY_QUICK_CART
-  }
-}
-
 export const openDisplayQuickCart = () => {
   return {
     type: type.OPEN_QUICK_CART
@@ -28,5 +22,64 @@ export const openDisplayQuickCart = () => {
 export const closeDisplayQuickCart = () => {
   return {
     type: type.CLOSE_QUICK_CART
+  }
+}
+
+export const displayFilter = () => {
+  return {
+    type: type.DISPLAY_FILTER
+  }
+}
+
+export const displaySearch = () => {
+  return {
+    type: type.DISPLAY_SEARCH
+  }
+}
+
+export const openQuickView = (item) => {
+  return {
+    type: type.OPEN_QUICK_VIEW,
+    item
+  }
+}
+
+export const closeQuickView = () => {
+  return {
+    type: type.CLOSE_QUICK_VIEW
+  }
+}
+
+export const setIsHomePage = (isHomePage) => {
+  return {
+    type: isHomePage ? type.IS_HOME_PAGE : null
+  }
+}
+
+export const getProductDetail = (id, data) => {
+  return {
+    type: type.GET_PRODUCT_DETAIL,
+    id,
+    data
+  }
+}
+
+export const addProductToCart = (data) => {
+  return {
+    type: type.ADD_TO_CART,
+    data
+  }
+}
+
+export const getProductToCart = () => {
+  return {
+    type: type.GET_PRODUCT_TO_CART,
+  }
+}
+
+export const showProductToCart = (data) => {
+  return {
+    type: type.SHOW_LIST_PRODUCTS_IN_CART,
+    data
   }
 }

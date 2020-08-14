@@ -1,8 +1,8 @@
 import * as type from "../constants/actionTypes";
 
-let initialState = null;
+let initialState = false;
 
 export default (state = initialState, action) => {
-  if (action.type === type.SHOW_LIST_PRODUCTS) return { ...state, data: action.data };
+  if (action.type === type.DISPLAY_FILTER) return !state
   return state
 }

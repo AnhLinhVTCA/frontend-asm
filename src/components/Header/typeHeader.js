@@ -2,9 +2,18 @@ import styled from "styled-components";
 import { } from "antd";
 
 export const Header = styled('div')`
+  display: block;
+  .menu-desktop{
+    height: 124px;
+    box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
+  }
+`;
+
+export const Navigation = styled('div')`
   background-color: transparent;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-   'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
 `;
 
 export const Container = styled('div')`
@@ -27,13 +36,14 @@ export const Menu = styled('div')`
   width: 65%;
   .main-menu{
     display: flex;
+    margin: 0;
     a{
       color: black;
       text-decoration: none;
       font-size: 15px;
       font-weight: 520;
       line-height: 1.3;
-      padding: 25px 0;
+      padding: 10px 0;
       &:hover{
         color: #717FE0;
       }
@@ -75,12 +85,13 @@ export const Menu = styled('div')`
       content: "HOT";
       background-color: #F74877;
       color: #fff;
-      font-size: 12px;
-      padding: 2px 5px;
+      font-size: 9px;
+      padding: 1.5px 2.5px;
       border-radius: 23px;
+      font-weight: 600;
       position: absolute;
-      top: -20px;
-      right: -15px;
+      top: -15px;
+      right: -5px;
     }
   }
 `;
@@ -88,6 +99,7 @@ export const Menu = styled('div')`
 export const SelectIcon = styled('div')`
   display: flex;
   width: 20%;
+  justify-content: flex-end;
   a{
     color: black;
     text-decoration: none;
