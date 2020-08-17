@@ -66,7 +66,7 @@ export default () => {
                     {data.productName}
                   </h4>
                   <span className="price">
-                    ${data.price}
+                    ${data.price.toFixed(2)}
                   </span>
                   <p className="description">
                     {data.description}

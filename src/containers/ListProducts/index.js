@@ -278,7 +278,7 @@ export default () => {
                       {item.productName}
                     </Link>
                     <span>
-                      ${item.price}
+                      ${item.price.toFixed(2)}
                     </span>
                   </Custom.Text>
                   <Custom.BtnLike>
@@ -295,7 +295,7 @@ export default () => {
           listProducts && <Custom.Loadmore>
             <button>
               Load More
-          </button>
+            </button>
           </Custom.Loadmore>
         }
       </Custom.Container>

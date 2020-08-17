@@ -11,6 +11,9 @@ export default () => {
   const data = useSelector(state => state.productIntoCart);
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(action.setIsHomePage(false));
+  }, [dispatch])
+  useEffect(() => {
     setState(data);
   }, [data])
   const columns = [
@@ -34,7 +37,7 @@ export default () => {
       dataIndex: 'price',
       key: 'price',
       width: '15%',
-      render: (text) => `$ ${text}`
+      render: (text) => `$ ${text.toFixed(2)}`
     },
     {
       title: 'QUANTITY',
@@ -59,7 +62,7 @@ export default () => {
       dataIndex: 'total',
       key: 'total',
       width: '15%',
-      render: (text, row) => `$ ${row.price * row.quantity}`
+      render: (text, row) => `$ ${(row.price * row.quantity).toFixed(2)}`
     },
   ];
   const hanleInputQuantity = (e, index) => {
@@ -78,6 +81,10 @@ export default () => {
     newState[index].quantity < 100 ? newState[index].quantity += 1 : newState[index].quantity = 100;
     setState(newState)
   };
+  let total = 0;
+  if (state.length > 0) {
+    state.forEach(item => total += item.quantity * item.price);
+  }
   return (
     <Custom.Feature>
       <Custom.Container>
@@ -110,8 +117,8 @@ export default () => {
                   Subtotal:
 								  </span>
                 <span>
-                  $79.65
-								  </span>
+                  ${total.toFixed(2)}
+                </span>
               </div>
 
               <div className="info-shipping">
@@ -144,8 +151,8 @@ export default () => {
                   Total:
 								  </span>
                 <span>
-                  $79.65
-								  </span>
+                  $ {total.toFixed(2)}
+                </span>
               </Custom.Total>
               <Custom.buttonSubmit>
                 Proceed to Checkout

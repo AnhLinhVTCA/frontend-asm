@@ -10,7 +10,7 @@ import * as action from "../../actions";
 
 export default () => {
   const [isScroll, setIsScroll] = useState(false);
-  const [isHomePage] = useState(false);
+  const isHomePage = useSelector(state => state.isHomePage)
   const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener('scroll', (e) => {

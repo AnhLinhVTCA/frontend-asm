@@ -52,7 +52,8 @@ export const closeQuickView = () => {
 
 export const setIsHomePage = (isHomePage) => {
   return {
-    type: isHomePage ? type.IS_HOME_PAGE : null
+    type: type.IS_HOME_PAGE,
+    isHomePage
   }
 }
 
@@ -71,7 +72,7 @@ export const addProductToCart = (data) => {
   }
 }
 
-export const getProductToCart = () => {
+export const getProductIntoCart = () => {
   return {
     type: type.GET_PRODUCT_TO_CART,
   }

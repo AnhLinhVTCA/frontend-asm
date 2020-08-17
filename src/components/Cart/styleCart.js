@@ -76,6 +76,7 @@ export const ListProducts = styled('div')`
 
 export const InfoProduct = styled('div')`
   margin-top: 5px;
+  width: 70%;
   a{
     display: block;
     text-decoration: none;
@@ -96,6 +97,7 @@ export const InfoProduct = styled('div')`
 
 export const ImageProduct = styled('div')`
   position: relative;
+  width: 30%;
   margin-right: 20px;
   cursor: pointer;
   img{
@@ -120,9 +122,6 @@ export const ImageProduct = styled('div')`
     width: 100%;
     height: 100%;
   }
-`;
-
-export const FooterCart = styled('div')`
 `;
 
 export const TotalPrice = styled('div')`

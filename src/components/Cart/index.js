@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom"
 import * as Custom from "./styleCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,14 +7,28 @@ import { useDispatch, useSelector } from "react-redux";
 import * as action from "../../actions";
 
 export default () => {
+  const [state, setState] = useState([]);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(action.getProductToCart());
-  }, [dispatch])
-  const toggleCart = useSelector(state => state.displayCart);
   const data = useSelector(state => state.productIntoCart);
+  const toggleCart = useSelector(state => state.displayCart);
+  useEffect(() => {
+    dispatch(action.getProductIntoCart());
+  }, [dispatch])
+  useEffect(() => {
+    setState(data);
+  }, [data])
+  let total = 0;
+  if (state.length > 0) {
+    state.forEach(item => total += item.quantity * item.price);
+  }
+  const handleRemoveItemInCart = useCallback((index) => {
+    const newState = state.slice()
+    newState.splice(index, 1)
+    setState(newState)
+    dispatch(action.addProductToCart(newState))
+  }, [dispatch, state])
   return (
-    <Custom.WrapCart style={toggleCart ? { visibility: 'visible' } : { visibility: 'hidden' }}>
+    <Custom.WrapCart style={{ visibility: toggleCart ? 'visible' : 'hidden' }}>
       <Custom.HiddenCart onClick={() => dispatch(action.closeDisplayQuickCart())} ></Custom.HiddenCart>
       <Custom.Cart className={toggleCart ? "show-cart" : ""}>
         <Custom.HeaderCart>
@@ -28,27 +42,27 @@ export default () => {
         <Custom.ListProducts>
           <ul>
             {
-              data && data.map((item, index) => (
-                <li key={index}>
-                  <Custom.ImageProduct>
-                    <img src={require("../../images/item-cart-01.jpg")} alt="IMG" />
+              state && state.map((item, index) => (
+                item.quantity > 0 && <li key={index} >
+                  <Custom.ImageProduct onClick={() => handleRemoveItemInCart(index)} >
+                    <img src={require(`../../${item.image}`)} alt="IMG" />
                   </Custom.ImageProduct>
                   <Custom.InfoProduct>
-                    <Link to="#">
-                      White Shirt Pleat
-                </Link>
+                    <Link to={`/product-detail/${item.id}`}>
+                      {item.name}
+                    </Link>
                     <span>
-                      1 x $19.00
-                </span>
+                      {item.quantity} x {item.price.toFixed(2)}
+                    </span>
                   </Custom.InfoProduct>
                 </li>
               ))
             }
           </ul>
-          <Custom.FooterCart>
+          <div className="end-cart">
             <Custom.TotalPrice>
-              Total: $75.00
-              </Custom.TotalPrice>
+              Total: $ {total.toFixed(2)}
+            </Custom.TotalPrice>
             <Custom.ListBtn>
               <Link to="/shopping-cart">
                 View Cart
@@ -57,9 +71,9 @@ export default () => {
                 Check Out
                 </Link>
             </Custom.ListBtn>
-          </Custom.FooterCart>
+          </div>
         </Custom.ListProducts>
       </Custom.Cart>
-    </Custom.WrapCart>
+    </Custom.WrapCart >
   )
 }

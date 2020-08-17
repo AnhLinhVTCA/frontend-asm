@@ -25,7 +25,7 @@ function* fetchProductDetail({ id }) {
 
 function* addToCart({ data }) {
   try {
-    if (!data) throw new Error("Data not null");
+    if (!data) throw new Error("Data not null!");
     let dataIntoCart = JSON.parse(localStorage.getItem('cart')) || [];
     if (dataIntoCart.length > 0) {
       if (isArray(data)) {
@@ -35,17 +35,22 @@ function* addToCart({ data }) {
         for (const item of dataIntoCart) {
           if (item.id === data.id && item.color === data.color && item.size === data.size) {
             item.quantity += data.quantity;
-          }
-          else {
-            dataIntoCart.push(data);
+            return localStorage.setItem('cart', JSON.stringify(dataIntoCart));
           }
         }
+        dataIntoCart.push(data);
       }
     }
     else {
       dataIntoCart.push(data);
     }
     localStorage.setItem('cart', JSON.stringify(dataIntoCart));
+    const listProduct = [];
+    for (const item of dataIntoCart) {
+      const { data } = yield call(getProductDetail, item.id);
+      listProduct.push({ id: data._id, name: data.productName, price: data.price, quantity: item.quantity, image: data.imagePath[0] })
+    }
+    yield put(action.showProductToCart(listProduct));
   } catch (error) {
     yield (error.message);
   }

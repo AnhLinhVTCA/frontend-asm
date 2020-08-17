@@ -209,6 +209,9 @@ export const Quantity = styled('div')`
 export const ModalBottom = styled('div')`
   text-align: center;
   margin-top: 20px;
+  .err{
+    color: red;
+  }
 `;
 
 export const Submit = styled(Button)`

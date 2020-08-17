@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import * as Custom from "./styleDetail";
 import * as CustomProduct from "../ListProducts/styleListProduct";
 import * as action from "../../actions";
@@ -16,23 +16,32 @@ export default ({ id }) => {
     size: '',
     quantity: 1,
   });
+  const [error, setError] = useState('');
   const [indexImageActived, setindexImageActived] = useState(0);
   const dispatch = useDispatch();
   const carousel = useCarousel({ nav: true, items: 1, loop: true, startPosition: indexImageActived });
   const carousel2 = useCarousel({ nav: true, items: 4 });
   useEffect(() => {
+    dispatch(action.setIsHomePage(false))
     if (id) {
       dispatch(action.getProductDetail(id));
       dispatch(action.listProducts())
     }
   }, [dispatch, id])
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(state);
-  }
   const { data } = useSelector(state => state.productDetail);
   const { status } = useSelector(state => state.productDetailQuickView);
   const listProducts = useSelector(state => state.listProducts);
+  const handleSubmit = useCallback((e) => {
+    try {
+      if (state.id === '' || state.color === '' || state.size === null || state.quantity === 0) throw new Error("Not null!");
+      dispatch(action.addProductToCart(state));
+      setError(null);
+      e.preventDefault();
+    } catch (error) {
+      setError(error.message);
+      e.preventDefault();
+    }
+  }, [dispatch, state])
   return (
     <Custom.Product>
       {
@@ -71,7 +80,7 @@ export default ({ id }) => {
                   {data.productName}
                 </h4>
                 <span className="price">
-                  ${data.price}
+                  ${data.price.toFixed(2)}
                 </span>
                 <p className="description">
                   {data.description}
@@ -83,9 +92,9 @@ export default ({ id }) => {
                     <div className="title">
                       Size
 									    </div>
-                    <Custom.select placeholder="Choose an option">
+                    <Custom.select placeholder="Choose an option" onChange={value => setState({ ...state, size: value })}>
                       {data.details.map((detail, index) =>
-                        <Custom.option key={index} onClick={() => setState({ ...state, size: detail.size })}>Size {detail.size}</Custom.option>
+                        <Custom.option key={index} value={detail.size}>Size {detail.size}</Custom.option>
                       )}
                     </Custom.select>
                   </Custom.Size>
@@ -93,9 +102,9 @@ export default ({ id }) => {
                     <div className="title">
                       Color
 									    </div>
-                    <Custom.select placeholder="Choose an option">
+                    <Custom.select placeholder="Choose an option" onChange={value => setState({ ...state, color: value })}>
                       {data.details.map((detail, index) =>
-                        <Custom.option key={index} onClick={() => setState({ ...state, color: detail.color })}>Size {detail.color}</Custom.option>
+                        <Custom.option key={index} value={detail.color}>Size {detail.color}</Custom.option>
                       )}
                     </Custom.select>
                   </Custom.Color>
@@ -109,9 +118,10 @@ export default ({ id }) => {
                         <FontAwesomeIcon icon={faPlus} />
                       </div>
                     </Custom.Quantity>
-                    <Custom.Submit htmlType="submit">
+                    {error && <p className="err">{error}</p>}
+                    <Custom.Submit htmlType="submit" onClick={() => setState({ ...state, id: data._id })}>
                       Add to cart
-										    </Custom.Submit>
+										</Custom.Submit>
                   </Custom.ModalBottom>
                 </form>
               </Custom.InputDetail>
@@ -214,7 +224,7 @@ export default ({ id }) => {
                           {item.productName}
                         </Link>
                         <span>
-                          ${item.price}
+                          ${item.price.toFixed(2)}
                         </span>
                       </CustomProduct.Text>
                       <CustomProduct.BtnLike>
@@ -230,6 +240,6 @@ export default ({ id }) => {
         </Custom.Container>
         {status && <QuickView />}
       </Custom.RelateProduct>
-    </Custom.Product>
+    </Custom.Product >
   )
 }
