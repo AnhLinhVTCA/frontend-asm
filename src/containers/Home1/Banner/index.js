@@ -9,7 +9,7 @@ export default () => {
         <Custom.Flex>
           <Custom.Col>
             <Custom.Block>
-              <img src={require("../../../images/banner-01.jpg")} width="100%" alt="IMG-BANNER" />
+              <img src={`${process.env.REACT_APP_PORT}/images/banner-01.jpg`} width="100%" alt="IMG-BANNER" />
               <Link to="product.html">
                 <Custom.Title>
                   <span>
@@ -29,7 +29,7 @@ export default () => {
           </Custom.Col>
           <Custom.Col>
             <Custom.Block>
-              <img src={require("../../../images/banner-02.jpg")} width="100%" alt="IMG-BANNER" />
+              <img src={`${process.env.REACT_APP_PORT}/images/banner-02.jpg`} width="100%" alt="IMG-BANNER" />
               <Link to="product.html">
                 <Custom.Title>
                   <span>
@@ -49,7 +49,7 @@ export default () => {
           </Custom.Col>
           <Custom.Col>
             <Custom.Block>
-              <img src={require("../../../images/banner-03.jpg")} width="100%" alt="IMG-BANNER" />
+              <img src={`${process.env.REACT_APP_PORT}/images/banner-03.jpg`} width="100%" alt="IMG-BANNER" />
               <Link to="product.html">
                 <Custom.Title>
                   <span>

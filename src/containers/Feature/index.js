@@ -23,7 +23,7 @@ export default () => {
       key: 'image',
       width: '10%',
       render: (text) => {
-        return <img src={require(`../../${text}`)} alt="PRODUCT" width='100%' />
+        return <img src={`${process.env.REACT_APP_PORT}/${text}`} alt="PRODUCT" width='100%' />
       }
     },
     {

@@ -267,7 +267,7 @@ export default () => {
             {listProducts.data.map((item, index) => (
               <Custom.Item key={index}>
                 <Custom.Image>
-                  <img src={require(`../../${item.imagePath[0]}`)} width="100%" alt="IMG-PRODUCT" />
+                  <img src={`${process.env.REACT_APP_PORT}/${item.imagePath[0]}`} width="100%" alt="IMG-PRODUCT" />
                   <button onClick={() => dispatch(action.openQuickView(item))}>
                     Quick View
                 </button>

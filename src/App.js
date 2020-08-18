@@ -4,7 +4,8 @@ import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import Body from "./containers/Body";
 import { BrowserRouter } from "react-router-dom";
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default () => {
   return (

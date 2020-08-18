@@ -25,6 +25,18 @@ export const closeDisplayQuickCart = () => {
   }
 }
 
+export const openDisplayLoginForm = () => {
+  return {
+    type: type.OPEN_LOGIN_MODAL
+  }
+}
+
+export const closeDisplayLoginForm = () => {
+  return {
+    type: type.CLOSE_LOGIN_MODAL
+  }
+}
+
 export const displayFilter = () => {
   return {
     type: type.DISPLAY_FILTER
@@ -82,5 +94,19 @@ export const showProductToCart = (data) => {
   return {
     type: type.SHOW_LIST_PRODUCTS_IN_CART,
     data
+  }
+}
+
+export const userLogin = (state, user = {}) => {
+  return {
+    type: type.USER_LOGIN,
+    state,
+    user
+  }
+}
+export const getUserLogin = (user) => {
+  return {
+    type: type.GET_USER_LOGIN,
+    user
   }
 }

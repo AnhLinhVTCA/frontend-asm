@@ -45,7 +45,7 @@ export default () => {
               state && state.map((item, index) => (
                 item.quantity > 0 && <li key={index} >
                   <Custom.ImageProduct onClick={() => handleRemoveItemInCart(index)} >
-                    <img src={require(`../../${item.image}`)} alt="IMG" />
+                    <img src={`${process.env.REACT_APP_PORT}/${item.image}`} alt="IMG" />
                   </Custom.ImageProduct>
                   <Custom.InfoProduct>
                     <Link to={`/product-detail/${item.id}`}>

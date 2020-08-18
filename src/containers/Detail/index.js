@@ -58,7 +58,7 @@ export default ({ id }) => {
                 {data.imagePath && data.imagePath.map((path, index) => (
                   <Custom.ItemImage key={index}>
                     <Custom.ItemImage >
-                      <img src={require(`../../${path}`)} alt="IMG-PRODUCT" className={indexImageActived === index ? " actived" : ""} onClick={() => setindexImageActived(index)} />
+                      <img src={`${process.env.REACT_APP_PORT}/${path}`} alt="IMG-PRODUCT" className={indexImageActived === index ? " actived" : ""} onClick={() => setindexImageActived(index)} />
                     </Custom.ItemImage>
                   </Custom.ItemImage>
                 ))}
@@ -68,7 +68,7 @@ export default ({ id }) => {
                   {data.imagePath && data.imagePath.map((path, index) => {
                     return (
                       <div key={index} className="item">
-                        <img src={require(`../../${path}`)} alt="IMG-PRODUCT" />
+                        <img src={`${process.env.REACT_APP_PORT}/${path}`} alt="IMG-PRODUCT" />
                       </div>)
                   })}
                 </div>
@@ -213,7 +213,7 @@ export default ({ id }) => {
                 return (
                   <Custom.Item key={index}>
                     <CustomProduct.Image>
-                      <img src={require(`../../${item.imagePath[0]}`)} width="100%" alt="IMG-PRODUCT" />
+                      <img src={`${process.env.REACT_APP_PORT}/${item.imagePath[0]}`} width="100%" alt="IMG-PRODUCT" />
                       <button onClick={() => dispatch(action.openQuickView(item))}>
                         Quick View
                           </button>

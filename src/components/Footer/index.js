@@ -105,19 +105,19 @@ export default () => {
         <Custom.CopyRight>
           <div>
             <Link to="#">
-              <img src={require("../../images/icons/icon-pay-01.png")} alt="ICON-PAY" />
+              <img src={`${process.env.REACT_APP_PORT}/images/icons/icon-pay-01.png`} alt="ICON-PAY" />
             </Link>
             <Link to="#">
-              <img src={require("../../images/icons/icon-pay-02.png")} alt="ICON-PAY" />
+              <img src={`${process.env.REACT_APP_PORT}/images/icons/icon-pay-02.png`} alt="ICON-PAY" />
             </Link>
             <Link to="#">
-              <img src={require("../../images/icons/icon-pay-03.png")} alt="ICON-PAY" />
+              <img src={`${process.env.REACT_APP_PORT}/images/icons/icon-pay-03.png`} alt="ICON-PAY" />
             </Link>
             <Link to="#">
-              <img src={require("../../images/icons/icon-pay-04.png")} alt="ICON-PAY" />
+              <img src={`${process.env.REACT_APP_PORT}/images/icons/icon-pay-04.png`} alt="ICON-PAY" />
             </Link>
             <Link to="#">
-              <img src={require("../../images/icons/icon-pay-05.png")} alt="ICON-PAY" />
+              <img src={`${process.env.REACT_APP_PORT}/images/icons/icon-pay-05.png`} alt="ICON-PAY" />
             </Link>
           </div>
           <p>

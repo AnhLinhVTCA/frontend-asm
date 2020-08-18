@@ -7,6 +7,7 @@ import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import * as action from "../../actions";
+import LoginForm from "../LoginForm";
 
 export default () => {
   const [isScroll, setIsScroll] = useState(false);
@@ -31,7 +32,7 @@ export default () => {
             <Custom.Flex>
               <Custom.Logo>
                 <Link to="/">
-                  <img src={require("../../images/icons/logo-01.png")} alt="IMG-LOGO" />
+                  <img src={`${process.env.REACT_APP_PORT}/images/icons/logo-01.png`} alt="IMG-LOGO" />
                 </Link>
               </Custom.Logo>
               <Custom.Menu>
@@ -79,6 +80,7 @@ export default () => {
           </Custom.Container>
         </Custom.Navigation>
       </div>
+      <LoginForm />
     </Custom.Header>
   )
 }

@@ -12,7 +12,7 @@ export default () => {
         {banner && banner.map((value, index) => {
           return (
             <div key={index} className="item">
-              <img src={require(`../../../${value.pathImage}`)} alt={value.alt} />
+              <img src={`${process.env.REACT_APP_PORT}/${value.pathImage}`} alt={value.alt} />
             </div>)
         })}
       </div>

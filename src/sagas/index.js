@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import * as type from "../constants/actionTypes";
 import * as action from "../actions";
-import { getListProducts, getProductDetail } from "../api";
+import { getListProducts, getProductDetail, getUser } from "../api";
 import { isArray } from "jquery";
 
 function* fetchProduct() {
@@ -71,11 +71,22 @@ function* getProductIntoCart() {
   }
 }
 
+function* userLogin({ state }) {
+  try {
+    if (state.email === "" || state.password === "" || state.password.length < 4) throw new Error("Invalid Email or Password!");
+    const { data } = yield call(getUser, state);
+    yield put(action.getUserLogin(data));
+  } catch (error) {
+    yield (error.message);
+  }
+}
+
 function* rootSaga() {
   yield takeLatest(type.GET_LIST_PRODUCTS, fetchProduct);
   yield takeLatest(type.GET_PRODUCT_DETAIL, fetchProductDetail);
   yield takeLatest(type.ADD_TO_CART, addToCart);
   yield takeLatest(type.GET_PRODUCT_TO_CART, getProductIntoCart);
+  yield takeLatest(type.USER_LOGIN, userLogin);
 }
 
 export default rootSaga;

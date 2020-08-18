@@ -44,7 +44,7 @@ export default () => {
                   {data.imagePath && data.imagePath.map((path, index) => (
                     <Custom.ItemImage key={index}>
                       <Custom.ItemImage >
-                        <img src={require(`../../${path}`)} alt="IMG-PRODUCT" className={imageActived === index ? " actived" : ""} onClick={() => setImageActived(index)} />
+                        <img src={`${process.env.REACT_APP_PORT}/${path}`} alt="IMG-PRODUCT" className={imageActived === index ? " actived" : ""} onClick={() => setImageActived(index)} />
                       </Custom.ItemImage>
                     </Custom.ItemImage>
                   ))}
@@ -54,7 +54,7 @@ export default () => {
                     {data.imagePath && data.imagePath.map((path, index) => {
                       return (
                         <div key={index} className="item">
-                          <img src={require(`../../${path}`)} alt="IMG-PRODUCT" />
+                          <img src={`${process.env.REACT_APP_PORT}/${path}`} alt="IMG-PRODUCT" />
                         </div>)
                     })}
                   </div>

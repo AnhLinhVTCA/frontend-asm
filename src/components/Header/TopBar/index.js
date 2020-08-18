@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
 import * as Custom from "./typeTopBar";
-import { Link } from "react-router-dom";
+import * as action from "../../../actions";
 
 export default () => {
+  const dispatch = useDispatch();
+  const handleClickMyAccount = useCallback(() => {
+    dispatch(action.openDisplayLoginForm());
+  }, [dispatch])
   return (
     <Custom.Wrapper>
       <Custom.Container>
@@ -11,21 +16,18 @@ export default () => {
             Free shipping for standard order over $100
 					</Custom.LeftTopBar>
           <Custom.RightTopBar>
-            <Link to="#">
+            <Custom.ButtonCustom>
               Help & FAQs
-						</Link>
-
-            <Link to="#">
+						</Custom.ButtonCustom>
+            <Custom.ButtonCustom onClick={() => handleClickMyAccount()}>
               My Account
-						</Link>
-
-            <Link to="#">
+						</Custom.ButtonCustom>
+            <Custom.ButtonCustom>
               EN
-						</Link>
-
-            <Link to="#">
+						</Custom.ButtonCustom>
+            <Custom.ButtonCustom>
               USD
-						</Link>
+						</Custom.ButtonCustom>
           </Custom.RightTopBar>
         </Custom.Flex>
       </Custom.Container>

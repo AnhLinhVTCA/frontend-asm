@@ -7,3 +7,7 @@ export const getListProducts = () => {
 export const getProductDetail = id => {
   return axios.get(`/api/product-detail/${id}`)
 }
+
+export const getUser = state => {
+  return axios.post("/api/admin/login", state)
+}
